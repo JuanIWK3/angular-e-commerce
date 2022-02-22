@@ -1,0 +1,26 @@
+<div class="container">
+  <form>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" required [(ngModel)]="email" name="email" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        required
+        [(ngModel)]="password"
+        name="password"
+      />
+    </mat-form-field>
+    <span>
+      <a style="text-decoration: none" href="/login">Forgot Password</a></span
+    >
+    <button (click)="login()" type="submit" mat-raised-button>Login</button>
+    <span>
+      Need an account?
+      <a style="text-decoration: none" routerLink="/register">Register</a></span
+    >
+  </form>
+</div>

@@ -1,0 +1,23 @@
+main {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  text-align: center;
+
+  mat-card {
+    display: flex;
+
+    margin: 8px;
+
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+  }
+
+  button {
+    margin: 8px;
+  }
+}

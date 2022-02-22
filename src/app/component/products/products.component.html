@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="page">
+    <app-header></app-header>
+    <main>
+      <mat-card *ngFor="let item of products; let i = index">
+        <div>{{ item.name }}</div>
+        <button (click)="addCart(i)" mat-raised-button class="cart-add">
+          Add to Cart
+        </button>
+      </mat-card>
+    </main>
+    <footer></footer>
+  </div>
+</div>

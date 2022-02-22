@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "e-commerce-development-41d52"
+  },
+  "targets": {
+    "e-commerce-development-41d52": {
+      "hosting": {
+        "angular-ecommerce": [
+          "e-commerce-development-41d52"
+        ]
+      }
+    }
+  }
+}

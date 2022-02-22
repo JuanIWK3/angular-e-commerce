@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="page">
+    <app-header></app-header>
+    <main>
+      <div *ngIf="!cartItems.length">
+        <img src="../../assets/images/empty-cart.png" alt="" />
+      </div>
+      <mat-card *ngFor="let item of cartItems; let i = index">
+        <div>{{ item.product.name }}</div>
+        <div>
+          <div>
+            <button
+              [disabled]="item.quantity == 0"
+              (click)="subtractQuantity(i)"
+              mat-button
+            >
+              -</button
+            >{{ item.quantity }}
+            <button (click)="addQuantity(i)" mat-button>+</button>
+          </div>
+          <button
+            (click)="removeCart(i)"
+            mat-raised-button
+            color="warn"
+            class="cart-add"
+          >
+            Remove
+          </button>
+        </div>
+      </mat-card>
+      <button *ngIf="cartItems.length" mat-raised-button>Buy</button>
+    </main>
+    <footer></footer>
+  </div>
+</div>
