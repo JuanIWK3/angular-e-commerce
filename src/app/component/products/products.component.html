@@ -4,6 +4,7 @@
     <main>
       <mat-card *ngFor="let item of products; let i = index">
         <div>{{ item.name }}</div>
+        <div>R${{ item.price }}</div>
         <button (click)="addCart(i)" mat-raised-button class="cart-add">
           Add to Cart
         </button>

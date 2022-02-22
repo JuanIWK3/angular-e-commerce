@@ -19,7 +19,7 @@
             <button (click)="addQuantity(i)" mat-button>+</button>
           </div>
           <button
-            (click)="removeCart(i)"
+            (click)="removeFromCart(i)"
             mat-raised-button
             color="warn"
             class="cart-add"
@@ -28,6 +28,7 @@
           </button>
         </div>
       </mat-card>
+      <mat-card id="total">Total = ${{ total }}</mat-card>
       <button *ngIf="cartItems.length" mat-raised-button>Buy</button>
     </main>
     <footer></footer>
