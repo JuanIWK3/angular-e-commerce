@@ -45,7 +45,7 @@ export class CartComponent implements OnInit {
     this.cartItems[i].quantity -= 1;
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
     this.total -= this.cartItems[i].product.price;
-    if (this.cartItems[i].quantity == 1) {
+    if (this.cartItems[i].quantity == 0) {
       this.removeFromCart(i);
     }
   }
