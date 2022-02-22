@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './component/register/register.component';
@@ -22,7 +24,8 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 import { environment } from 'src/environments/environment';
 import { HeaderComponent } from './component/header/header.component';
-import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './component/cart/cart.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { CartComponent } from './cart/cart.component';
     RegisterComponent,
     HeaderComponent,
     CartComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,8 @@ import { CartComponent } from './cart/cart.component';
     MatFormFieldModule,
     MatButtonModule,
     MatCardModule,
+    MatIconModule,
+    MatSelectModule,
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

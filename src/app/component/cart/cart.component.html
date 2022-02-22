@@ -1,6 +1,6 @@
 <div class="container">
   <div class="page">
-    <app-header></app-header>
+    <app-header [cartItems]="cartItems"></app-header>
     <main>
       <div *ngIf="!cartItems.length">
         <img src="../../assets/images/empty-cart.png" alt="" />
@@ -28,8 +28,11 @@
           </button>
         </div>
       </mat-card>
-      <mat-card id="total">Total = ${{ total }}</mat-card>
-      <button *ngIf="cartItems.length" mat-raised-button>Buy</button>
+      <mat-card *ngIf="cartItems.length" id="total">
+        <p>Total = ${{ total }}</p>
+
+        <button *ngIf="cartItems.length" mat-raised-button>Buy</button>
+      </mat-card>
     </main>
     <footer></footer>
   </div>

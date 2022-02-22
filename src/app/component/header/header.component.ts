@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ICartItem } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @Input() cartItems: ICartItem[] = [];
+
+  userDropdown: boolean = false;
+
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.cartItems);
+  }
+
+  dropUser() {
+    this.userDropdown = !this.userDropdown;
+  }
 
   goToCart() {
     this.router.navigate(['/cart']);

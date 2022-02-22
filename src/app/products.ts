@@ -24,4 +24,9 @@ export const productsData = [
     price: 6000,
     imageUrl: '',
   },
+  {
+    name: 'Galaxy Fold',
+    price: 6000,
+    imageUrl: '',
+  },
 ];

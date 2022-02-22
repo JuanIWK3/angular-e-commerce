@@ -41,12 +41,9 @@ $angular-ecommerce-theme: mat.define-light-theme(
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
 body {
   margin: 0;
+  padding: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
@@ -61,6 +58,7 @@ body {
 
 .page {
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
