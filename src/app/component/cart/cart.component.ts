@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ICartItem } from '../../interfaces';
+import { ICartItem, IOrder, IProduct } from '../../interfaces';
 
 @Component({
   selector: 'app-cart',
@@ -11,11 +11,31 @@ export class CartComponent implements OnInit {
     localStorage.getItem('cartItems') || '[]'
   ) as ICartItem[];
 
+  orders: IOrder[] = [];
+
   total: number = this.calculateTotal();
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.orders = JSON.parse(localStorage.getItem('orders')!);
+    if (this.orders === null) {
+      this.orders = [];
+    }
+  }
+
+  buy() {
+    let data = new Date();
+
+    this.orders.push({
+      products: this.cartItems,
+      total: this.total,
+      data: data,
+    });
+    localStorage.setItem('orders', JSON.stringify(this.orders));
+    localStorage.removeItem('cartItems');
+    this.cartItems = [];
+  }
 
   calculateTotal() {
     this.total = 0;

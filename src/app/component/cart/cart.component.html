@@ -31,7 +31,9 @@
       <mat-card *ngIf="cartItems.length" id="total">
         <p>Total = ${{ total }}</p>
 
-        <button *ngIf="cartItems.length" mat-raised-button>Buy</button>
+        <button *ngIf="cartItems.length" mat-raised-button (click)="buy()">
+          Buy
+        </button>
       </mat-card>
     </main>
     <footer></footer>

@@ -26,6 +26,7 @@ import { environment } from 'src/environments/environment';
 import { HeaderComponent } from './component/header/header.component';
 import { CartComponent } from './component/cart/cart.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { OrdersComponent } from './component/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
     HeaderComponent,
     CartComponent,
     DashboardComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

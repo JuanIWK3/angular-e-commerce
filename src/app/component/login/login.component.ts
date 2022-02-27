@@ -19,7 +19,5 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.email, this.password);
   }
 
-  forgotPassword() {
-    console.log('aa');
-  }
+  forgotPassword() {}
 }

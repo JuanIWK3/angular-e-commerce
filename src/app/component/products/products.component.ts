@@ -20,6 +20,14 @@ export class ProductsComponent implements OnInit {
   }
 
   addCart(i: number) {
+    for (let j = 0; j < this.cartItems.length; j++) {
+      if (this.cartItems[j].product.name === this.products[i].name) {
+        this.cartItems[j].quantity += 1;
+        localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+        return;
+      }
+    }
+
     this.cartItems.push({ product: this.products[i], quantity: 1 });
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }

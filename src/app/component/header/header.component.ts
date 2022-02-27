@@ -10,13 +10,13 @@ import { ICartItem } from 'src/app/interfaces';
 export class HeaderComponent implements OnInit {
   @Input() cartItems: ICartItem[] = [];
 
+  user: boolean = localStorage.getItem('user') ? true : false;
+
   userDropdown: boolean = false;
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    console.log(this.cartItems);
-  }
+  ngOnInit(): void {}
 
   dropUser() {
     this.userDropdown = !this.userDropdown;
@@ -27,5 +27,18 @@ export class HeaderComponent implements OnInit {
   }
   goToProducts() {
     this.router.navigate(['']);
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+  goToRegister() {
+    this.router.navigate(['/register']);
+  }
+  goToOrders() {
+    this.router.navigate(['/orders']);
   }
 }

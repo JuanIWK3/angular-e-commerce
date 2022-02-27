@@ -9,13 +9,20 @@ import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 export class AuthService {
   email: string = '';
   password: string = '';
+  userData: any;
 
-  constructor(private auth: Auth, private router: Router) {}
+  constructor(private auth: Auth, private router: Router) {
+    this.auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+      }
+    });
+  }
 
   login(email: string, password: string) {
     signInWithEmailAndPassword(this.auth, email, password).then(
       () => {
-        localStorage.setItem('token', 'true');
         this.router.navigate(['']);
       },
       (err) => {
@@ -33,5 +40,6 @@ export class AuthService {
 
   logout() {
     signOut(this.auth);
+    localStorage.removeItem('user');
   }
 }
