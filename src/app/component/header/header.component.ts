@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICartItem } from 'src/app/interfaces';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -14,9 +15,13 @@ export class HeaderComponent implements OnInit {
 
   userDropdown: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {}
+
+  logout() {
+    this.authService.logout();
+  }
 
   dropUser() {
     this.userDropdown = !this.userDropdown;

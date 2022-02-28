@@ -1,1 +1,39 @@
-<p>register works!</p>
+<div class="container">
+  <form>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" required [(ngModel)]="email" name="email" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        required
+        [(ngModel)]="password"
+        name="password"
+        (change)="checkPassword()"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password Confirm</mat-label>
+      <input
+        matInput
+        type="password"
+        required
+        [(ngModel)]="passwordConfirm"
+        name="passwordConfirm"
+        (change)="checkPassword()"
+      />
+    </mat-form-field>
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <button (click)="register()" type="submit" mat-raised-button>
+      Register
+    </button>
+    <span>
+      Already registered?
+      <a style="text-decoration: none" routerLink="/login">Login</a></span
+    >
+  </form>
+</div>

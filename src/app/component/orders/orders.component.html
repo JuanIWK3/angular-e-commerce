@@ -10,7 +10,7 @@
         <div class="order-header">
           <div class="order-header-info">Order {{ i + 1 }}</div>
           <div class="order-header-info">
-            {{ order.data | date: "dd/mm/yyyy" }}
+            {{ order.data | date: "d/MM/y" }}
           </div>
         </div>
         <br />
@@ -32,7 +32,7 @@
             </tbody>
           </table>
           <div class="total">
-            <strong>Total: {{ order.total }}</strong>
+            <strong>Total: $ {{ order.total }}</strong>
           </div>
         </div>
       </mat-card>

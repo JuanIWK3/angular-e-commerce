@@ -25,7 +25,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { HeaderComponent } from './component/header/header.component';
 import { CartComponent } from './component/cart/cart.component';
-import { DashboardComponent } from './component/dashboard/dashboard.component';
+
 import { OrdersComponent } from './component/orders/orders.component';
 
 @NgModule({
@@ -36,7 +36,6 @@ import { OrdersComponent } from './component/orders/orders.component';
     RegisterComponent,
     HeaderComponent,
     CartComponent,
-    DashboardComponent,
     OrdersComponent,
   ],
   imports: [

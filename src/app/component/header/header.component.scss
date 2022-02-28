@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: max-content;
+  height: 64px;
   margin-bottom: 16px;
 
   width: 100vw;
@@ -25,7 +25,7 @@
   justify-content: space-between;
   flex-direction: row;
 
-  @media only screen and (max-width: 540px) {
+  @media only screen and (max-width: 550px) {
     display: none;
   }
 

@@ -10,13 +10,18 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
+  error: string = '';
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
   login() {
-    this.authService.login(this.email, this.password);
+    this.error = '';
+
+    if (!this.authService.login(this.email, this.password)) {
+      this.error = 'Login failed';
+    }
   }
 
   forgotPassword() {}
