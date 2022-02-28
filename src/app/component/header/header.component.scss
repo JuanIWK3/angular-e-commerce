@@ -4,13 +4,22 @@
   justify-content: space-between;
   height: 64px;
   margin-bottom: 16px;
+  overflow: hidden;
 
   width: 100vw;
+
+  @media only screen and (max-width: 550px) {
+    justify-content: center;
+  }
 
   .logo {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: 550px) {
+      display: none;
+    }
 
     h1 {
       margin: 0 16px;
@@ -25,12 +34,7 @@
   justify-content: space-between;
   flex-direction: row;
 
-  @media only screen and (max-width: 550px) {
-    display: none;
-  }
-
   .nav-item {
-    margin: 0px 16px;
     cursor: pointer;
   }
 }
@@ -44,34 +48,6 @@
   margin-right: 8px;
 }
 
-.user-dropdown {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  right: 0;
-  top: 70px;
-
-  .theme-option {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    user-select: none;
-    cursor: pointer;
-    height: 35px;
-
-    p {
-      margin-right: 8px;
-      margin-bottom: 0;
-    }
-
-    mat-slide-toggle {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-  }
+button {
+  text-align: center;
 }

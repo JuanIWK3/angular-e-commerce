@@ -18,8 +18,6 @@ export class HeaderComponent implements OnInit {
 
   user: User = JSON.parse(localStorage.getItem('user')!);
 
-  userDropdown: boolean = false;
-
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -44,10 +42,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-  }
-
-  dropUser() {
-    this.userDropdown = !this.userDropdown;
   }
 
   goToCart() {

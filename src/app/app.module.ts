@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './component/register/register.component';
@@ -49,6 +50,7 @@ import { OrdersComponent } from './component/orders/orders.component';
     MatCardModule,
     MatIconModule,
     MatSelectModule,
+    MatMenuModule,
     MatSlideToggleModule,
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),

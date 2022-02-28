@@ -1,6 +1,7 @@
 <mat-card class="header">
   <div class="logo">
     <h1>E-Commerce</h1>
+    <mat-icon>local_mall</mat-icon>
   </div>
   <div class="nav-items">
     <button mat-button (click)="goToProducts()" class="nav-item">
@@ -8,43 +9,29 @@
     </button>
     <button mat-button (click)="goToCart()" class="nav-item">
       <button class="cart-quantity">
-        {{ cartItems.length }}</button
-      >Cart
+        {{ cartItems.length }}</button>
+      <mat-icon>shopping_cart</mat-icon>
     </button>
-    <button
-      *ngIf="user && user.displayName"
-      (click)="dropUser()"
-      mat-button
-      class="nav-item"
-    >
-      {{ user.displayName }}
+    <button *ngIf="user && user.displayName" mat-button [matMenuTriggerFor]="menu">
+      {{ user.displayName.split(' ')[0] }}
     </button>
-    <button *ngIf="!user" (click)="dropUser()" mat-button class="nav-item">
+    <button *ngIf="!user || !user.displayName" mat-button [matMenuTriggerFor]="menu">
       User
     </button>
-    <mat-card *ngIf="userDropdown" class="user-dropdown">
-      <button *ngIf="!user" mat-button class="nav-item" (click)="goToLogin()">
-        Login
-      </button>
-      <button
-        *ngIf="!user"
-        mat-button
-        class="nav-item"
-        (click)="goToRegister()"
-      >
+    <mat-menu #menu="matMenu">
+      <button *ngIf="!user" mat-menu-item (click)="goToLogin()">Login</button>
+      <button *ngIf="!user" mat-menu-item (click)="goToRegister()">
         Register
       </button>
-      <button *ngIf="user" mat-button class="nav-item" (click)="goToOrders()">
-        Orders
+      <button *ngIf="user" mat-menu-item (click)="goToOrders()">
+        <mat-icon>list_alt</mat-icon>Orders
       </button>
-      <button *ngIf="user" mat-button class="nav-item" (click)="logout()">
-        Logout
+      <button *ngIf="user" mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>Logout
       </button>
-      <div class="theme-option">
-        <mat-slide-toggle (change)="setTheme($event)" [checked]="isDarkTheme"
-          >Dark Theme</mat-slide-toggle
-        >
+      <div mat-menu-item>
+        <mat-slide-toggle (change)="setTheme($event)" [checked]="isDarkTheme">Dark Theme</mat-slide-toggle>
       </div>
-    </mat-card>
+    </mat-menu>
   </div>
 </mat-card>
