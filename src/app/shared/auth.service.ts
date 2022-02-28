@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+  User,
+} from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -10,48 +16,33 @@ export class AuthService {
   email: string = '';
   password: string = '';
   userData: any;
-  isLoggedIn: boolean = false;
 
-  constructor(private auth: Auth, private router: Router) {
+  constructor(private auth: Auth, private provider: GoogleAuthProvider) {
     this.auth.onAuthStateChanged((user) => {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
-        this.isLoggedIn = true;
-      } else {
-        this.isLoggedIn = false;
       }
     });
   }
 
+  googleSignIn() {
+    return signInWithPopup(this.auth, this.provider);
+  }
+
   checkLogin() {
-    return this.isLoggedIn;
-  }
-
-  login(email: string, password: string): boolean {
-    signInWithEmailAndPassword(this.auth, email, password).then(
-      () => {
-        this.router.navigate(['']);
-        return true;
-      },
-      (err) => {
-        return false;
-      }
-    );
+    if (localStorage.getItem('user')) {
+      return true;
+    }
     return false;
   }
 
-  register(email: string, password: string): boolean {
-    createUserWithEmailAndPassword(this.auth, email, password).then(
-      () => {
-        this.router.navigate(['login']);
-        return true;
-      },
-      (err) => {
-        return false;
-      }
-    );
-    return false;
+  login(email: string, password: string) {
+    return signInWithEmailAndPassword(this.auth, email, password);
+  }
+
+  register(email: string, password: string) {
+    return createUserWithEmailAndPassword(this.auth, email, password);
   }
 
   logout() {

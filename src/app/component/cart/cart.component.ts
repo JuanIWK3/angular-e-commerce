@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/auth.service';
 import { ICartItem, IOrder, IProduct } from '../../interfaces';
 
 @Component({
@@ -11,16 +12,24 @@ export class CartComponent implements OnInit {
     localStorage.getItem('cartItems') || '[]'
   ) as ICartItem[];
 
+  logged: boolean = false;
+
   orders: IOrder[] = [];
 
   total: number = this.calculateTotal();
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.orders = JSON.parse(localStorage.getItem('orders')!);
     if (this.orders === null) {
       this.orders = [];
+    }
+
+    if (this.authService.checkLogin()) {
+      this.logged = true;
+    } else {
+      this.logged = false;
     }
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
@@ -12,15 +13,27 @@ export class LoginComponent implements OnInit {
   password: string = '';
   error: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  login() {
-    this.error = '';
+  async googleSignIn() {
+    try {
+      this.error = '';
+      await this.authService.googleSignIn();
+      this.router.navigate(['']);
+    } catch (error) {
+      this.error = 'Failed to login';
+    }
+  }
 
-    if (!this.authService.login(this.email, this.password)) {
-      this.error = 'Login failed';
+  async login() {
+    try {
+      this.error = '';
+      await this.authService.login(this.email, this.password);
+      this.router.navigate(['']);
+    } catch (error) {
+      this.error = 'Failed to login';
     }
   }
 

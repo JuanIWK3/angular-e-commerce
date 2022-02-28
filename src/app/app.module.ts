@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './component/register/register.component';
 
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideAuth, getAuth, GoogleAuthProvider } from '@angular/fire/auth';
 
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
@@ -53,7 +53,7 @@ import { OrdersComponent } from './component/orders/orders.component';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [GoogleAuthProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -19,9 +19,12 @@
       <a style="text-decoration: none" href="/login">Forgot Password</a></span
     >
     <button (click)="login()" type="submit" mat-raised-button>Login</button>
-    <span>
-      Need an account?
-      <a style="text-decoration: none" routerLink="/register">Register</a></span
-    >
   </form>
+  <span>
+    Need an account?
+    <a style="text-decoration: none" routerLink="/register">Register</a></span
+  >
+  <button mat-raised-button color="warn" (click)="googleSignIn()">
+    Sign In with Google
+  </button>
 </div>

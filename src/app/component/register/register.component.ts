@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
@@ -12,13 +13,11 @@ export class RegisterComponent implements OnInit {
   passwordConfirm: string = '';
   error: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
   checkPassword(): void {
-    console.log('change');
-
     if (this.password !== this.passwordConfirm) {
       this.error = 'Passwords do not match';
     } else {
@@ -26,14 +25,21 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  register() {
+  googleSignIn() {
+    this.authService.googleSignIn();
+  }
+
+  async register() {
     if (this.password !== this.passwordConfirm) {
       return;
     }
 
-    this.error = '';
-
-    if (!this.authService.register(this.email, this.password)) {
+    try {
+      this.error = '';
+      await this.authService.register(this.email, this.password);
+      this.authService.login(this.email, this.password);
+      this.router.navigate(['']);
+    } catch (error) {
       this.error = 'Failed to register';
     }
   }

@@ -31,9 +31,12 @@
       <mat-card *ngIf="cartItems.length" id="total">
         <p>Total = ${{ total }}</p>
 
-        <button *ngIf="cartItems.length" mat-raised-button (click)="buy()">
+        <button [disabled]="!logged" mat-raised-button (click)="buy()">
           Buy
         </button>
+        <div class="error" *ngIf="!logged">
+          You must <a routerLink="/login">log in </a> to buy
+        </div>
       </mat-card>
     </main>
     <footer></footer>

@@ -11,7 +11,17 @@
         {{ cartItems.length }}</button
       >Cart
     </button>
-    <button (click)="dropUser()" mat-button class="nav-item">User</button>
+    <button
+      *ngIf="user && user.displayName"
+      (click)="dropUser()"
+      mat-button
+      class="nav-item"
+    >
+      {{ user.displayName }}
+    </button>
+    <button *ngIf="!user" (click)="dropUser()" mat-button class="nav-item">
+      User
+    </button>
     <mat-card *ngIf="userDropdown" class="user-dropdown">
       <button *ngIf="!user" mat-button class="nav-item" (click)="goToLogin()">
         Login
@@ -24,8 +34,12 @@
       >
         Register
       </button>
-      <button mat-button class="nav-item" (click)="goToOrders()">Orders</button>
-      <button mat-button class="nav-item" (click)="logout()">Logout</button>
+      <button *ngIf="user" mat-button class="nav-item" (click)="goToOrders()">
+        Orders
+      </button>
+      <button *ngIf="user" mat-button class="nav-item" (click)="logout()">
+        Logout
+      </button>
     </mat-card>
   </div>
 </mat-card>

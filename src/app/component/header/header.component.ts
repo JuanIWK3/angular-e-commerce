@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'firebase/auth';
 import { ICartItem } from 'src/app/interfaces';
 import { AuthService } from 'src/app/shared/auth.service';
 
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class HeaderComponent implements OnInit {
   @Input() cartItems: ICartItem[] = [];
 
-  user: boolean = localStorage.getItem('user') ? true : false;
+  user: User = JSON.parse(localStorage.getItem('user')!);
 
   userDropdown: boolean = false;
 
