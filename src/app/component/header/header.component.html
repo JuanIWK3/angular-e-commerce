@@ -40,6 +40,11 @@
       <button *ngIf="user" mat-button class="nav-item" (click)="logout()">
         Logout
       </button>
+      <div class="theme-option">
+        <mat-slide-toggle (change)="setTheme($event)" [checked]="isDarkTheme"
+          >Dark Theme</mat-slide-toggle
+        >
+      </div>
     </mat-card>
   </div>
 </mat-card>
