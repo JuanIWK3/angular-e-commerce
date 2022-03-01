@@ -1,12 +1,11 @@
 export const environment = {
   firebase: {
-    projectId: 'e-commerce-development-41d52',
-    appId: '1:155237144651:web:7fa23289178a0de24515ce',
-    storageBucket: 'e-commerce-development-41d52.appspot.com',
-    locationId: 'southamerica-east1',
-    apiKey: 'AIzaSyA3Org7e6i9BO_QO8hRkwBVWJqdyG7XIJA',
-    authDomain: 'e-commerce-development-41d52.firebaseapp.com',
-    messagingSenderId: '155237144651',
+    apiKey: 'AIzaSyC7dpO1MpvB9TTi6WzXFsNBTwk43xNBL7Q',
+    authDomain: 'e-commerce-production-ba816.firebaseapp.com',
+    projectId: 'e-commerce-production-ba816',
+    storageBucket: 'e-commerce-production-ba816.appspot.com',
+    messagingSenderId: '438662904878',
+    appId: '1:438662904878:web:74a5817fae2a5cf54933bf',
   },
-  production: true
+  production: true,
 };

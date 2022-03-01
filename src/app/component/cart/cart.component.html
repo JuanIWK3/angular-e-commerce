@@ -9,21 +9,11 @@
         <div>{{ item.product.name }}</div>
         <div>
           <div>
-            <button
-              [disabled]="item.quantity == 0"
-              (click)="subtractQuantity(i)"
-              mat-button
-            >
-              -</button
-            >{{ item.quantity }}
+            <button [disabled]="item.quantity == 0" (click)="subtractQuantity(i)" mat-button>
+              -</button>{{ item.quantity }}
             <button (click)="addQuantity(i)" mat-button>+</button>
           </div>
-          <button
-            (click)="removeFromCart(i)"
-            mat-raised-button
-            color="warn"
-            class="cart-add"
-          >
+          <button (click)="removeFromCart(i)" mat-raised-button color="warn" class="cart-add">
             Remove
           </button>
         </div>
