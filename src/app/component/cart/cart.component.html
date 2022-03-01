@@ -3,7 +3,7 @@
     <app-header [cartItems]="cartItems"></app-header>
     <main>
       <div *ngIf="!cartItems.length">
-        <img src="../../assets/images/empty-cart.png" alt="" />
+        <img class="cart-empty-image" src="../../assets/images/empty-cart.png" alt="" />
       </div>
       <mat-card *ngFor="let item of cartItems; let i = index">
         <div>{{ item.product.name }}</div>

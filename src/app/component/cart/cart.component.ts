@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'firebase/auth';
 import { AuthService } from 'src/app/shared/auth.service';
+import { FirestoreService } from 'src/app/shared/firestore.service';
 import { ICartItem, IOrder, IProduct } from '../../interfaces';
 
 @Component({
@@ -12,20 +14,20 @@ export class CartComponent implements OnInit {
     localStorage.getItem('cartItems') || '[]'
   ) as ICartItem[];
 
+  user: User = JSON.parse(localStorage.getItem('user')!);
+
   logged: boolean = false;
 
-  orders: IOrder[] = [];
+  order: any;
 
   total: number = this.calculateTotal();
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private storeService: FirestoreService
+  ) {}
 
   ngOnInit(): void {
-    this.orders = JSON.parse(localStorage.getItem('orders')!);
-    if (this.orders === null) {
-      this.orders = [];
-    }
-
     if (this.authService.checkLogin()) {
       this.logged = true;
     } else {
@@ -35,13 +37,23 @@ export class CartComponent implements OnInit {
 
   buy() {
     let data = new Date();
+    let dia = String(data.getDate()).padStart(2, '0');
+    let mes = String(data.getMonth() + 1).padStart(2, '0');
+    let ano = data.getFullYear();
+    let dataAtual = dia + '/' + mes + '/' + ano;
 
-    this.orders.push({
+    console.log(dataAtual);
+
+    this.order = {
       products: this.cartItems,
       total: this.total,
-      data: data,
-    });
-    localStorage.setItem('orders', JSON.stringify(this.orders));
+      data: dataAtual,
+    };
+
+    if (this.user.email) {
+      this.storeService.addOrder(this.user.email, this.order);
+    }
+
     localStorage.removeItem('cartItems');
     this.cartItems = [];
   }

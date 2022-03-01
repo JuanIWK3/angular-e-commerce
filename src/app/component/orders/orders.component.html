@@ -2,15 +2,11 @@
   <div class="page">
     <app-header></app-header>
     <main>
-      <mat-card
-        (click)="toggleAccordion($event)"
-        class="order"
-        *ngFor="let order of orders; let i = index"
-      >
+      <mat-card (click)="toggleAccordion($event)" class="order" *ngFor="let order of orders; let i = index">
         <div class="order-header">
           <div class="order-header-info">Order {{ i + 1 }}</div>
           <div class="order-header-info">
-            {{ order.data | date: "d/MM/y" }}
+            {{ order.data }}
           </div>
         </div>
         <br />
@@ -27,16 +23,18 @@
               <tr *ngFor="let products of order.products">
                 <td>{{ products.product.name }}</td>
                 <td>{{ products.quantity }}</td>
-                <td>{{ products.product.price }}</td>
+                <td>R${{ products.product.price }}</td>
               </tr>
             </tbody>
           </table>
           <div class="total">
-            <strong>Total: $ {{ order.total }}</strong>
+            <strong>Total: R$ {{ order.total }}</strong>
           </div>
         </div>
       </mat-card>
     </main>
-    <footer></footer>
+    <footer>
+
+    </footer>
   </div>
 </div>

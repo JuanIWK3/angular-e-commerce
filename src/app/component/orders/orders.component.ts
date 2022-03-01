@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IOrder } from 'src/app/interfaces';
+import { FirestoreService } from 'src/app/shared/firestore.service';
 
 @Component({
   selector: 'app-orders',
@@ -7,9 +8,16 @@ import { IOrder } from 'src/app/interfaces';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  orders: IOrder[] = JSON.parse(localStorage.getItem('orders')!);
+  orders: IOrder[] = [];
+  tOrders: unknown;
 
-  constructor() {}
+  constructor(private storeService: FirestoreService) {}
+
+  async ngOnInit() {
+    const data = await this.storeService.getData();
+    console.log(data);
+    this.orders = data;
+  }
 
   toggleAccordion(event: Event) {
     const div = event.target as HTMLDivElement;
@@ -19,6 +27,4 @@ export class OrdersComponent implements OnInit {
     }
     div.parentElement?.classList.toggle('active');
   }
-
-  ngOnInit(): void {}
 }
